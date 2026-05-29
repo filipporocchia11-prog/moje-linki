@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>about.me | papiez</title>
+    <style>
+        :root {
+            --bg-color: #050a05;
+            --accent-color: #00ff41;
+            --glow: 0 0 15px rgba(0, 255, 65, 0.4), inset 0 0 15px rgba(0, 255, 65, 0.1);
+            --card-bg: rgba(0, 20, 0, 0.6);
+            --text-primary: #ffffff;
+            --text-secondary: #00ff41;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        #loader {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: var(--bg-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.8s ease-out;
+        }
+
+        .loader-content {
+            text-align: center;
+            color: var(--accent-color);
+            text-shadow: 0 0 10px var(--accent-color);
+        }
+
+        #progress {
+            font-size: 3rem;
+            font-weight: bold;
+        }
+
+        .loading-text {
+            letter-spacing: 2px;
+            font-size: 0.8rem;
+            margin-top: 5px;
+        }
+
+        .background-anim {
+            position: fixed;
+            top: -50%; left: -50%; width: 200%; height: 200%;
+            background: radial-gradient(circle, transparent 20%, var(--bg-color) 80%),
+                        repeating-linear-gradient(transparent 0, transparent 2px, rgba(0, 255, 65, 0.03) 2px, rgba(0, 255, 65, 0.03) 4px);
+            animation: pulseBg 10s infinite alternate linear;
+            z-index: -1;
+        }
+
+        @keyframes pulseBg {
+            0% { transform: scale(1); opacity: 0.4; }
+            100% { transform: scale(1.05); opacity: 0.8; }
+        }
+
+        .container {
+            width: 100%;
+            max-width: 400px;
+            padding: 20px;
+            opacity: 1;
+            transition: opacity 1s ease-in, transform 1s ease-out;
+        }
+
+        .container.hidden {
+            opacity: 0;
+            transform: translateY(20px);
+            pointer-events: none;
+        }
+
+        .profile-card {
+            background: var(--card-bg);
+            border: 1px solid var(--accent-color);
+            box-shadow: var(--glow);
+            border-radius: 15px;
+            padding: 30px;
+            position: relative;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .view-counter {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .profile-info {
+            text-align: center;
+            margin-bottom: 30px;
+            margin-top: 20px;
+        }
+
+        .avatar {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background-color: #000;
+            border: 2px solid var(--accent-color);
+            margin: 0 auto 15px;
+            box-shadow: 0 0 10px var(--accent-color);
+        }
+
+        .username {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            text-shadow: 0 0 5px var(--accent-color);
+            margin-bottom: 5px;
+        }
+
+        .bio {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .links-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .link-btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            text-align: center;
+            text-decoration: none;
+            color: var(--text-primary);
+            border: 1px solid rgba(0, 255, 65, 0.3);
+            border-radius: 8px;
+            background: rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .link-btn:hover {
+            border-color: var(--accent-color);
+            background: var(--accent-color);
+            color: #000;
+            box-shadow: 0 0 15px var(--accent-color);
+            transform: scale(1.02);
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body> 
+
+    <div id="loader">
+        <div class="loader-content">
+            <div id="progress">0%</div>
+            <div class="loading-text">INITIALIZING...</div>
+        </div>
+    </div>
+
+    <div class="background-anim"></div>
+
+    <div class="container hidden" id="main-content">
+        <div class="profile-card">
+            <div class="view-counter" title="Prawdziwe wyświetlenia">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                <span id="view-count">...</span>
+            </div>
+
+            <div class="profile-info">
+                <div class="avatar"></div>
+                <h1 class="username">@papiez</h1>
+                <p class="bio">Welcome to my zone</p>
+            </div>
+
+            <div class="links-container">
+                <a href="#" class="link-btn">Link 1 (Wkrótce)</a>
+                <a href="#" class="link-btn">Link 2 (Wkrótce)</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Ładowanie API licznika w tle
+            fetch('https://api.counterapi.dev/v1/flajp-links/papiez-counter/up')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById("view-count").innerText = data.count;
+                })
+                .catch(err => {
+                    document.getElementById("view-count").innerText = "ERR";
+                });
+
+            let progressValue = 0;
+            const progressText = document.getElementById("progress");
+            const loader = document.getElementById("loader");
+            const mainContent = document.getElementById("main-content");
+
+            const interval = setInterval(() => {
+                progressValue += Math.floor(Math.random() * 15) + 5; 
+                if (progressValue >= 100) {
+                    progressValue = 100;
+                    clearInterval(interval);
+                    progressText.innerText = progressValue + "%";
+                    setTimeout(() => {
+                        loader.style.opacity = "0";
+                        setTimeout(() => {
+                            loader.style.display = "none";
+                            mainContent.classList.remove("hidden");
+                        }, 800);
+                    }, 500);
+                } else {
+                    progressText.innerText = progressValue + "%";
+                }
+            }, 100);
+        });
+    </script>
+</body>
+</html>
