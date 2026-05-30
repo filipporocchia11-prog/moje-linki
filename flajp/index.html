@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>about.me | papiez</title>
+    <title>about.me | flajp</title>
     <style>
         /* --- ZMIENNE DLA MOTYWÓW --- */
-        .theme-neon {
-            --bg-color: #050a05;
-            --accent-color: #00ff41;
-            --glow: 0 0 15px rgba(0, 255, 65, 0.4), inset 0 0 15px rgba(0, 255, 65, 0.1);
-            --card-bg: rgba(0, 20, 0, 0.6);
+        .theme-bw {
+            --bg-color: #0a0a0a;
+            --accent-color: #ffffff;
+            --glow: 0 0 20px rgba(255, 255, 255, 0.15), inset 0 0 15px rgba(255, 255, 255, 0.05);
+            --card-bg: rgba(20, 20, 20, 0.8);
             --text-primary: #ffffff;
-            --text-secondary: #00ff41;
+            --text-secondary: #a0a0a0;
         }
 
         * {
@@ -66,7 +66,7 @@
             position: fixed;
             top: -50%; left: -50%; width: 200%; height: 200%;
             background: radial-gradient(circle, transparent 20%, var(--bg-color) 80%),
-                        repeating-linear-gradient(transparent 0, transparent 2px, rgba(0, 255, 65, 0.03) 2px, rgba(0, 255, 65, 0.03) 4px);
+                        repeating-linear-gradient(transparent 0, transparent 2px, rgba(255, 255, 255, 0.02) 2px, rgba(255, 255, 255, 0.02) 4px);
             animation: pulseBg 10s infinite alternate linear;
             z-index: -1;
         }
@@ -161,7 +161,7 @@
             text-align: center;
             text-decoration: none;
             color: var(--text-primary);
-            border: 1px solid rgba(0, 255, 65, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.3);
             border-radius: 8px;
             background: rgba(0, 0, 0, 0.5);
             transition: all 0.3s ease;
@@ -182,7 +182,7 @@
         }
     </style>
 </head>
-<body class="theme-neon"> 
+<body class="theme-bw"> 
 
     <div id="loader">
         <div class="loader-content">
@@ -202,8 +202,8 @@
 
             <div class="profile-info">
                 <div class="avatar"></div>
-                <h1 class="username">@papiez</h1>
-                <p class="bio">Welcome to my zone</p>
+                <h1 class="username">@flajp</h1>
+                <p class="bio">JS / Graphic Design | Imagine Dragons / Taco Hemingway / Maneskin</p>
             </div>
 
             <div class="links-container">
@@ -211,17 +211,13 @@
                     <svg class="link-icon" viewBox="0 0 24 24"><path fill="currentColor" d="...[SVG Discord]..."/></svg>
                     Discord
                 </a>
-                <a href="https://ne0nstore.mysellauth.com/" class="link-btn">
-                    <svg class="link-icon" viewBox="0 0 24 24"><path fill="currentColor" d="...[SVG Shop]..."/></svg>
-                    Shop
-                </a>
-                <a href="https://www.tiktok.com/@pap1ezzz?_r=1&_t=ZN-96m6iAKt2Ry" class="link-btn">
-                    <svg class="link-icon" viewBox="0 0 24 24"><path fill="currentColor" d="...[SVG Tiktok]..."/></svg>
-                    Tiktok
-                </a>
-                <a href="https://t.me/P4piez" class="link-btn">
+                <a href="https://t.me/flajpik" class="link-btn">
                     <svg class="link-icon" viewBox="0 0 24 24"><path fill="currentColor" d="...[SVG Telegram]..."/></svg>
                     Telegram
+                </a>
+                <a href="https://www.tiktok.com/@filip6757?_r=1&_t=ZN-96noPQXpizK" class="link-btn">
+                    <svg class="link-icon" viewBox="0 0 24 24"><path fill="currentColor" d="...[SVG Tiktok]..."/></svg>
+                    Tiktok
                 </a>
             </div>
         </div>
@@ -229,8 +225,8 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            // Licznik publiczny API dla Papieża
-            fetch('https://api.counterapi.dev/v1/flajp-links/papiez-counter/up')
+            // Licznik publiczny API dla Flajpa
+            fetch('https://api.counterapi.dev/v1/flajp-links/flajp-counter/up')
                 .then(response => response.json())
                 .then(data => {
                     document.getElementById("view-count").innerText = data.count;
@@ -264,4 +260,5 @@
         });
     </script>
 </body>
-</html>
+                                                                   </html>
+    
