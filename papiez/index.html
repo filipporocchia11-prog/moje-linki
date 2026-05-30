@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>about.me | papiez</title>
     <style>
-        :root {
+        /* --- ZMIENNE DLA MOTYWÓW --- */
+        .theme-neon {
             --bg-color: #050a05;
             --accent-color: #00ff41;
             --glow: 0 0 15px rgba(0, 255, 65, 0.4), inset 0 0 15px rgba(0, 255, 65, 0.1);
@@ -31,6 +32,7 @@
             overflow: hidden;
         }
 
+        /* --- EKRAN ŁADOWANIA --- */
         #loader {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -59,6 +61,7 @@
             margin-top: 5px;
         }
 
+        /* --- ANIMOWANE TŁO --- */
         .background-anim {
             position: fixed;
             top: -50%; left: -50%; width: 200%; height: 200%;
@@ -73,6 +76,7 @@
             100% { transform: scale(1.05); opacity: 0.8; }
         }
 
+        /* --- RAMKA (KARTA) --- */
         .container {
             width: 100%;
             max-width: 400px;
@@ -123,6 +127,10 @@
             border: 2px solid var(--accent-color);
             margin: 0 auto 15px;
             box-shadow: 0 0 10px var(--accent-color);
+            /* AWATAR BASE64 Z TWOJEGO PFP */
+            background-image: url('data:image/png;base64,...[BARDZO DŁUGI CIĄG BASE64 TWOJEGO PFP]...');
+            background-size: cover;
+            background-position: center;
         }
 
         .username {
@@ -144,7 +152,10 @@
         }
 
         .link-btn {
-            display: block;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
             width: 100%;
             padding: 12px;
             text-align: center;
@@ -164,9 +175,14 @@
             transform: scale(1.02);
             font-weight: bold;
         }
+
+        .link-icon {
+            width: 18px;
+            height: 18px;
+        }
     </style>
 </head>
-<body> 
+<body class="theme-neon"> 
 
     <div id="loader">
         <div class="loader-content">
@@ -191,15 +207,29 @@
             </div>
 
             <div class="links-container">
-                <a href="#" class="link-btn">Link 1 (Wkrótce)</a>
-                <a href="#" class="link-btn">Link 2 (Wkrótce)</a>
+                <a href="https://discord.gg/ne0nstore" class="link-btn">
+                    <svg class="link-icon" viewBox="0 0 24 24"><path fill="currentColor" d="...[SVG Discord]..."/></svg>
+                    Discord
+                </a>
+                <a href="https://ne0nstore.mysellauth.com/" class="link-btn">
+                    <svg class="link-icon" viewBox="0 0 24 24"><path fill="currentColor" d="...[SVG Shop]..."/></svg>
+                    Shop
+                </a>
+                <a href="https://www.tiktok.com/@pap1ezzz?_r=1&_t=ZN-96m6iAKt2Ry" class="link-btn">
+                    <svg class="link-icon" viewBox="0 0 24 24"><path fill="currentColor" d="...[SVG Tiktok]..."/></svg>
+                    Tiktok
+                </a>
+                <a href="https://t.me/P4piez" class="link-btn">
+                    <svg class="link-icon" viewBox="0 0 24 24"><path fill="currentColor" d="...[SVG Telegram]..."/></svg>
+                    Telegram
+                </a>
             </div>
         </div>
     </div>
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            // Ładowanie API licznika w tle
+            // Licznik publiczny API dla Papieża
             fetch('https://api.counterapi.dev/v1/flajp-links/papiez-counter/up')
                 .then(response => response.json())
                 .then(data => {
